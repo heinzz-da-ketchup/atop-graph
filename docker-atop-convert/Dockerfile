@@ -1,7 +1,7 @@
-FROM    ubuntu:16.04
+FROM    ubuntu:22.04
 
 ENV DEBIAN_FRONTEND  noninteractive
-ENV INFLUXDB_VERSION 0.13.0
+ENV INFLUXDB_VERSION 1.8.10
 
 RUN \
     apt-get -y update && apt-get -y upgrade ; \
