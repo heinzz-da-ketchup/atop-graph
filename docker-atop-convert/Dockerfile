@@ -5,8 +5,8 @@ ENV INFLUXDB_VERSION 1.8.10
 
 RUN \
     apt-get -y update && apt-get -y upgrade ; \
-    apt-get -y install wget libfontconfig ;\
-    wget -q https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_amd64.deb && \
+    apt-get -y install curl libfontconfig ;\
+    curl -Ls https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_amd64.deb --output influxdb_${INFLUXDB_VERSION}_amd64.deb && \
     dpkg -i influxdb_${INFLUXDB_VERSION}_amd64.deb && rm influxdb_${INFLUXDB_VERSION}_amd64.deb
 
 #building extra version of atop
