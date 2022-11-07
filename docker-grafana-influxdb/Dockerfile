@@ -17,7 +17,7 @@ ENV     INFLUXDB_GRAFANA_PW     grafana
 ENV     ROOT_PW                 root
 
 RUN     apt-get -y update && apt-get -y upgrade ; \
-        apt-get -y install wget supervisor curl  libfontconfig netcat ;\
+        apt-get -y install supervisor curl libfontconfig netcat jq ;\
         curl -Ls https://dl.grafana.com/oss/release/grafana_${GRAFANA_VERSION}_amd64.deb --output grafana_${GRAFANA_VERSION}_amd64.deb && \
             dpkg -i grafana_${GRAFANA_VERSION}_amd64.deb && rm grafana_${GRAFANA_VERSION}_amd64.deb ; \
 	curl -Ls https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_amd64.deb --output influxdb_${INFLUXDB_VERSION}_amd64.deb && \
@@ -51,7 +51,7 @@ RUN     /configure.sh
 # Configure nginx and supervisord
 ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN     apt-get autoremove -y wget curl && \
+RUN     apt-get autoremove -y jq netcat && \
             apt-get -y clean && \
             rm -rf /var/lib/apt/lists/* && rm /*.sh
 
