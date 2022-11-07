@@ -40,10 +40,12 @@ ADD     ./grafana/run.sh      /usr/local/bin/run_grafana
 ADD     ./configure.sh /configure.sh
 ADD     ./set_grafana.sh /set_grafana.sh
 ADD     ./set_influxdb.sh /set_influxdb.sh
-RUN     /configure.sh
+ADD     ./import_dashboards.sh /import_dashboards.sh
 
 # Set dashboards
 ADD    ./dashboards/ /var/lib/grafana/dashboards/
+
+RUN     /configure.sh
 
 # Configure nginx and supervisord
 ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf

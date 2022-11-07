@@ -36,6 +36,8 @@ curl -s  "http://admin:admin@127.0.0.1:${GRAFANA_PORT}/api/datasources" -X POST 
 
 echo ""
 
+/import_dashboards.sh -u admin -w admin -p /var/lib/grafana/dashboards/ -t localhost:3000
+
 /etc/init.d/grafana-server stop
 
 
