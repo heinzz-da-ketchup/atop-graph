@@ -88,6 +88,7 @@ please ignore "Errors" -- just attempt to remove nonexistant containers
 ####2. convert the logs
 
 Copy all your logs to ./src directory, and convert it.
+You can also use different path to `/src` and `/dst` directories, and provide it as an argument to `convert` and `push` scripts.
 
 ```
 # find ./src  -type f
