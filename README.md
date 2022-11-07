@@ -1,6 +1,9 @@
 #Graphing __atop__ metrics in grafana/influxdb
 
-Just simple way to create graphics from atop metrics. Now it works for:
+Just simple way to create graphics from atop metrics. 
+Updated to use images based on Ubuntu 22.04 and current versions of atop, Grafana and InfluxDB. 
+
+Now it works for:
 
 - __CPU__ information
 - __cpu__ infirmation per core
