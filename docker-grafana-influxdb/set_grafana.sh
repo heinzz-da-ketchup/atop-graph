@@ -12,8 +12,9 @@ sed -i -e "s#<--GRAFANA_PORT-->#${GRAFANA_PORT}#g" /etc/grafana/grafana.ini && \
     chown root:grafana /etc/grafana/grafana.ini
 
 # starting grafana server for adding datasource
-/etc/init.d/grafana-server start
-/etc/init.d/grafana-server status
+# For some reason first (succesfull) start of grafana endfs with exit code 1
+# We need to ignore errors here, we are checking if grafana is accessible later.
+/etc/init.d/grafana-server start || true
 
 START_TIMEOUT=120
 T=1
