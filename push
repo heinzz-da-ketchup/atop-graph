@@ -8,7 +8,7 @@ fi
 
 IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' grafana-influxdb_con )
 
-if [ xIP = x ] ; then
+if [[ -z $IP ]] ; then
 	echo " container grafana-influxdb_con is not running, please start container and do that again"
 	exit 1
 fi
