@@ -1,5 +1,11 @@
 #! /bin/bash
 
+if [[ -z $1 ]]; then
+    LOCAL_PATH=$(pwd)
+else
+    LOCAL_PATH="${1}"
+fi
+
 IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' grafana-influxdb_con )
 
 if [ xIP = x ] ; then
@@ -7,6 +13,6 @@ if [ xIP = x ] ; then
 	exit 1
 fi
 
-docker run -v $(pwd)/src:/src -v $(pwd)/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=PUSH --env IP=$IP --name atop-pusher  atop-convert && \
+docker run -v ${LOCAL_PATH}/src:/src -v ${LOCAL_PATH}/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=PUSH --env IP=$IP --name atop-pusher  atop-convert && \
 docker rm atop-pusher
 

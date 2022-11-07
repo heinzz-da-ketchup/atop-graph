@@ -1,5 +1,11 @@
 #! /bin/bash
 
-docker run -v $(pwd)/src:/src -v $(pwd)/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=CONVERT  --name atop-converter atop-convert && \
+if [[ -z $1 ]]; then
+    LOCAL_PATH=$(pwd)
+else
+    LOCAL_PATH="${1}"
+fi
+ 
+docker run -v ${LOCAL_PATH}/src:/src -v ${LOCAL_PATH}/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=CONVERT  --name atop-converter atop-convert && \
 docker rm atop-converter
 
